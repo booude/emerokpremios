@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overlay de Prêmios</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<script>
+    var func = function () {
+        setTimeout(function () {
+            fetch('/api/prizes').then(response =>
+                response.json().then(data => ({
+                    data: data
+                })
+                )
+                    .then(res => {
+                        console.log(res.data)
+                        if (res.data != null) {
+                            var codeBlock = `<video id="hideMe" autoplay>
+                                <source src="/static/prizes/${res.data['prize']}.webm" type="video/webm">
+                                </video>`
+                            document.getElementById("video").innerHTML = codeBlock
+                            url = `/update/prizes/${res.data['id']}`
+                            fetch(url, { method: 'POST' })
+                            setTimeout(func, 15000);
+                        }
+                        else if (res.data == null) {
+                            setTimeout(func, 50)
+                        }
+                    }))
+        }, 50)
+    }
+    func()
+</script>
+
+<body>
+    <div id="video"></div>
+</body>
+
+
+</html>
