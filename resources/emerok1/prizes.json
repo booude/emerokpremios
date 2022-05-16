@@ -1,0 +1,66 @@
+{
+  "0": {
+    "prize": "QUALQUER SKIN",
+    "desc": "QUALQUER SKIN DO JOGO!!! emerokHype",
+    "weight": 1.5
+  },
+  "1": {
+    "prize": "PASSE WILD",
+    "desc": "UM PASSE WILD!!! emerokHype",
+    "weight": 1.5
+  },
+  "2": {
+    "prize": "X1",
+    "desc": "X1 CONTRA O PRÓPRIO EMEROKLOL!!! emerokNoted",
+    "weight": 3
+  },
+  "3": {
+    "prize": "SALVE BODE",
+    "desc": "UM SALVE PELO PRÓPRIO MODERADOR 1BODE PARA QUALQUER PESSOA QUE VOCÊ QUISER!!! booudeTRAIL",
+    "weight": 0.05
+  },
+  "4": {
+    "prize": "ESCOLHA CAMPEÃO",
+    "desc": "O PODER DE ESCOLHER UM CAMPEÃO DA JUNGLE!!! emerokSmite",
+    "weight": 3
+  },
+  "5": {
+    "prize": "QUALQUER SALVE",
+    "desc": "SALVE PERSONALIZADO. EX: SALVE DO EKKO, SALVE DO MALPHITE!!! emerokFofo",
+    "weight": 8
+  },
+  "6": {
+    "prize": "NADA",
+    "desc": "NADAKKKKKKK emerokLaugh",
+    "weight": 30.0
+  },
+  "7": {
+    "prize": "1K PONTOS",
+    "desc": "1000 PONTOS NA LOJINHA!!! emerokAYAYA",
+    "points": 1000,
+    "weight": 30.0
+  },
+  "8": {
+    "prize": "6K PONTOS",
+    "desc": "6000 PONTOS NA LOJINHA!!! emerokAYAYA",
+    "points": 6000,
+    "weight": 20
+  },
+  "9": {
+    "prize": "10K PONTOS",
+    "desc": "10000 PONTOS NA LOJINHA!!! emerokAYAYA",
+    "points": 10000,
+    "weight": 10
+  },
+  "10": {
+    "prize": "PERDER 1K",
+    "desc": "MENOS 1000 PONTOS NA LOJINHA!!! emerokLaugh",
+    "weight": 0.1
+  },
+  "11": {
+    "prize": "50K PONTOS",
+    "desc": "50000 PONTOS NA LOJINHA!!! emerokAYAYA",
+    "points": 10000,
+    "weight": 0.1
+  }
+}
