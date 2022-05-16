@@ -88,6 +88,16 @@ class Bot(commands.Bot):
                                 await channel.send(f'!addpoints {ganhador} {points}')
                             except KeyError:
                                 pass
+                            try:
+                                price = prizes[i]['price']
+                                bank = prizes[-1]['weight']
+                                new = bank - price
+                                json.editweight(channel.name, 'cores', new)
+                                if new < prizes[i]['price']:
+                                    json.editweight(channel.name, i, 0)
+                            except KeyError:
+                                pass
+
                     if gifter[i][1] == 0:
                         gifter.remove(gifter[i])
                 else:
