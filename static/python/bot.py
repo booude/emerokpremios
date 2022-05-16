@@ -48,6 +48,7 @@ class Bot(commands.Bot):
 
     async def event_raw_usernotice(self, channel, tags):
         prizes = json.loadprizes(channel.name)
+        prizes.pop('99')
         prize = []
         weight = []
         for i in prizes:
@@ -133,6 +134,7 @@ class Bot(commands.Bot):
     async def sortear(self, ctx: commands.Context):
         if ctx.author.is_mod:
             prizes = json.loadprizes(ctx.channel.name)
+            prizes.pop('99')
             prize = []
             weight = []
             ganhador = ctx.message.content.split()[1]
