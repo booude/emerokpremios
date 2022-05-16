@@ -48,7 +48,7 @@ class Bot(commands.Bot):
 
     async def event_raw_usernotice(self, channel, tags):
         prizes = json.loadprizes(channel.name)
-        prizes.pop('99')
+        cores = prizes.pop('99')
         prize = []
         weight = []
         for i in prizes:
@@ -68,6 +68,15 @@ class Bot(commands.Bot):
                     try:
                         points = prizes[i]['points']
                         await channel.send(f'!addpoints {ganhador} {points}')
+                    except KeyError:
+                        pass
+                    try:
+                        price = prizes[i]['price']
+                        bank = cores['weight']
+                        new = bank - price
+                        json.editweight(channel.name, '99', new)
+                        if new < prizes[i]['price']:
+                            json.editweight(channel.name, i, 0)
                     except KeyError:
                         pass
         elif tags['msg-id'] == 'submysterygift':
@@ -91,9 +100,9 @@ class Bot(commands.Bot):
                                 pass
                             try:
                                 price = prizes[i]['price']
-                                bank = prizes[-1]['weight']
+                                bank = cores['weight']
                                 new = bank - price
-                                json.editweight(channel.name, 'cores', new)
+                                json.editweight(channel.name, '99', new)
                                 if new < prizes[i]['price']:
                                     json.editweight(channel.name, i, 0)
                             except KeyError:
@@ -116,6 +125,15 @@ class Bot(commands.Bot):
                                 await channel.send(f'!addpoints {ganhador} {points}')
                             except KeyError:
                                 pass
+                            try:
+                                price = prizes[i]['price']
+                                bank = cores['weight']
+                                new = bank - price
+                                json.editweight(channel.name, '99', new)
+                                if new < prizes[i]['price']:
+                                    json.editweight(channel.name, i, 0)
+                            except KeyError:
+                                pass
 
     async def event_message(self, message):
 
@@ -134,7 +152,7 @@ class Bot(commands.Bot):
     async def sortear(self, ctx: commands.Context):
         if ctx.author.is_mod:
             prizes = json.loadprizes(ctx.channel.name)
-            prizes.pop('99')
+            cores = prizes.pop('99')
             prize = []
             weight = []
             ganhador = ctx.message.content.split()[1]
@@ -150,6 +168,15 @@ class Bot(commands.Bot):
                     try:
                         points = prizes[i]['points']
                         await ctx.send(f'!addpoints {ganhador} {points}')
+                    except KeyError:
+                        pass
+                    try:
+                        price = prizes[i]['price']
+                        bank = cores['weight']
+                        new = bank - price
+                        json.editweight(ctx.channel.name, '99', new)
+                        if new < prizes[i]['price']:
+                            json.editweight(ctx.channel.name, i, 0)
                     except KeyError:
                         pass
 
