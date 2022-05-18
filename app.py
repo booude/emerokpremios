@@ -117,7 +117,6 @@ def prizes():
         return redirect('/prizes')
     else:
         prizes = loadprizes('emerok1')
-        prizes.pop('99')
         return render_template("prizes.html", headings=("Prize", "Weight"), prizes=prizes)
 
 

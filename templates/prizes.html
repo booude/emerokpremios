@@ -18,17 +18,14 @@
         </tr>
         {% for row in prizes %}
         <tr class="table__row">
-            {% for cell in row %}
             <form action="#" method="post">
-                <td class="table__cell" value={{ prizes[cell]['prize'] }}>{{ prizes[cell]['prize'] }}<input
-                        type="hidden" name="id" value={{ cell }} /></td>
-                <td class="table__cell"><input type="number" name="weight" value={{ prizes[cell]['weight'] }}
+                <td class="table__cell" value={{ prizes[row]['prize'] }}>{{ prizes[row]['prize'] }}<input type="hidden"
+                        name="id" value={{ row }} /></td>
+                <td class="table__cell"><input type="number" name="weight" value={{ prizes[row]['weight'] }}
                         step="0.01" />
                     <input type="Submit" value="update" />
                 </td>
             </form>
-
-            {% endfor %}
         </tr>
         {% endfor %}
     </table>
