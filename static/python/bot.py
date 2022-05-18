@@ -83,30 +83,53 @@ class Bot(commands.Bot):
             print('massgift', tags['login'], tags['msg-param-mass-gift-count'])
             gifter.append([tags['login'], tags['msg-param-mass-gift-count']])
         elif tags['msg-id'] == 'subgift':
-            for i in range(len(gifter)):
-                if tags['login'] == gifter[i][0]:
-                    gifter[i][1] = int(gifter[i][1]) - 1
-                    ganhador = tags['msg-param-recipient-display-name']
-                    mod.add_prize(ganhador, resultado, channel.name)
-                    for i in prizes:
-                        if resultado == prizes[i]['prize']:
-                            desc = prizes[i]['desc']
-                            item = start_queue(desc, 3)
-                            await channel.send(f'/me {ganhador}, você ganhou....... {item}')
-                            try:
-                                points = prizes[i]['points']
-                                await channel.send(f'!addpoints {ganhador} {points}')
-                            except KeyError:
-                                pass
-                            try:
-                                price = prizes[i]['price']
-                                bank = cores['weight']
-                                new = bank - price
-                                json.editweight(channel.name, '99', new)
-                                if new < prizes[i]['price']:
-                                    json.editweight(channel.name, i, 0)
-                            except KeyError:
-                                pass
+            if len(gifter) == 0:
+                ganhador = tags['msg-param-recipient-display-name']
+                mod.add_prize(ganhador, resultado, channel.name)
+                for i in prizes:
+                    if resultado == prizes[i]['prize']:
+                        desc = prizes[i]['desc']
+                        item = start_queue(desc, 3)
+                        await channel.send(f'/me {ganhador}, você ganhou....... {item}')
+                        try:
+                            points = prizes[i]['points']
+                            await channel.send(f'!addpoints {ganhador} {points}')
+                        except KeyError:
+                            pass
+                        try:
+                            price = prizes[i]['price']
+                            bank = cores['weight']
+                            new = bank - price
+                            json.editweight(channel.name, '99', new)
+                            if new < prizes[i]['price']:
+                                json.editweight(channel.name, i, 0)
+                        except KeyError:
+                            pass
+            else:
+                for i in range(len(gifter)):
+                    if tags['login'] == gifter[i][0]:
+                        gifter[i][1] = int(gifter[i][1]) - 1
+                        ganhador = tags['msg-param-recipient-display-name']
+                        mod.add_prize(ganhador, resultado, channel.name)
+                        for i in prizes:
+                            if resultado == prizes[i]['prize']:
+                                desc = prizes[i]['desc']
+                                item = start_queue(desc, 3)
+                                await channel.send(f'/me {ganhador}, você ganhou....... {item}')
+                                try:
+                                    points = prizes[i]['points']
+                                    await channel.send(f'!addpoints {ganhador} {points}')
+                                except KeyError:
+                                    pass
+                                try:
+                                    price = prizes[i]['price']
+                                    bank = cores['weight']
+                                    new = bank - price
+                                    json.editweight(channel.name, '99', new)
+                                    if new < prizes[i]['price']:
+                                        json.editweight(channel.name, i, 0)
+                                except KeyError:
+                                    pass
 
                     if gifter[i][1] == 0:
                         gifter.remove(gifter[i])
