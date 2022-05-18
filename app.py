@@ -97,11 +97,6 @@ def logout():
 
 @app.route("/", methods=["GET"])
 def home():
-    return redirect('/lista')
-
-
-@app.route("/lista", methods=["GET"])
-def table():
     prizes = Prize.query.order_by(Prize.id.desc()).filter(
         db.extract('month', Prize.date) == datetime.today().month).all()
     return render_template("table.html", headings=("Name", "Prize", "Date"), prizes=prizes)
