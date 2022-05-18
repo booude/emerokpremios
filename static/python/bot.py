@@ -89,7 +89,7 @@ class Bot(commands.Bot):
                 for i in prizes:
                     if resultado == prizes[i]['prize']:
                         desc = prizes[i]['desc']
-                        item = start_queue(desc, 3)
+                        item = start_queue(desc, 14)
                         await channel.send(f'/me {ganhador}, você ganhou....... {item}')
                         try:
                             points = prizes[i]['points']
@@ -114,7 +114,7 @@ class Bot(commands.Bot):
                         for i in prizes:
                             if resultado == prizes[i]['prize']:
                                 desc = prizes[i]['desc']
-                                item = start_queue(desc, 3)
+                                item = start_queue(desc, 14)
                                 await channel.send(f'/me {ganhador}, você ganhou....... {item}')
                                 try:
                                     points = prizes[i]['points']
@@ -141,7 +141,7 @@ class Bot(commands.Bot):
                     for i in prizes:
                         if resultado == prizes[i]['prize']:
                             desc = prizes[i]['desc']
-                            item = start_queue(desc)
+                            item = start_queue(desc, 14)
                             await channel.send(f'/me {ganhador}, você ganhou....... {item}')
                             try:
                                 points = prizes[i]['points']
