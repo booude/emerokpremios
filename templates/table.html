@@ -11,19 +11,28 @@
 
 <body>
     <a href="/login">Login</a>
-    <table clash="table">
-        <tr class="table__header">
-            {% for header in headings %}
-            <th class="table__cell">{{ header }}</th>
+    <table class="table table-bordered table-hover table-dark">
+        <thead>
+            <tr>
+                {% for header in headings %}
+                <th scope="col">{{ header }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% set count = namespace(value=1) %}
+            {% for row in prizes %}
+            <tr>
+                <td scope="row" style="text-align: center; padding: 7px;">{{ count.value }}</td>
+                <td scope="row" style="text-align: center; padding: 7px;"><a href="http://www.twitch.tv/{{row.name}}">{{
+                        row.name
+                        }}</a></td>
+                <td scope="row" style="text-align: center; padding: 7px;">{{ row.prize }}</td>
+                <td scope="row" style="text-align: center; padding: 7px;">{{ row.date }}</td>
+            </tr>
+            {% set count.value = count.value + 1 %}
             {% endfor %}
-        </tr>
-        {% for row in prizes %}
-        <tr class="table__row">
-            <td class="table__cell"><a href="http://www.twitch.tv/{{row.name}}">{{ row.name }}</a></td>
-            <td class="table__cell">{{ row.prize }}</td>
-            <td class="table__cell">{{ row.date }}</td>
-        </tr>
-        {% endfor %}
+        </tbody>
     </table>
 </body>
 
