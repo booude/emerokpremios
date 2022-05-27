@@ -8,32 +8,78 @@
     <title>Central de Prêmios Emerok</title>
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
+<script>
+    function searchNames() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("name");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+    function searchPrizes() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("prize");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[2];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
 
 <body>
-    <a href="/login">Login</a>
-    <table class="table table-bordered table-hover table-dark">
-        <thead>
-            <tr>
-                {% for header in headings %}
-                <th scope="col">{{ header }}</th>
+    <div class="table">
+        <a href="/login" style="margin-left: 20%">Login</a>
+        <input type="text" class="search" id="name" onkeyup="searchNames()" placeholder="Search for names..."
+            title="Type in a name">
+        <input type="text" class="search" id="prize" onkeyup="searchPrizes()" placeholder="Search for prizes..."
+            title="Type in a prize">
+    </div>
+    <div>
+        <table id="myTable" class="table table-bordered table-hover table-dark">
+            <thead>
+                <tr class="header">
+                    {% for header in headings %}
+                    <th scope="col">{{ header }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% set count = namespace(value=1) %}
+                {% for row in prizes %}
+                <tr>
+                    <td scope="row">{{ count.value }}</td>
+                    <td scope="row"><a href="http://www.twitch.tv/{{row.name}}">{{
+                            row.name
+                            }}</a></td>
+                    <td scope="row">{{ row.prize }}</td>
+                    <td scope="row">{{ row.date }}</td>
+                </tr>
+                {% set count.value = count.value + 1 %}
                 {% endfor %}
-            </tr>
-        </thead>
-        <tbody>
-            {% set count = namespace(value=1) %}
-            {% for row in prizes %}
-            <tr>
-                <td scope="row" style="text-align: center; padding: 7px;">{{ count.value }}</td>
-                <td scope="row" style="text-align: center; padding: 7px;"><a href="http://www.twitch.tv/{{row.name}}">{{
-                        row.name
-                        }}</a></td>
-                <td scope="row" style="text-align: center; padding: 7px;">{{ row.prize }}</td>
-                <td scope="row" style="text-align: center; padding: 7px;">{{ row.date }}</td>
-            </tr>
-            {% set count.value = count.value + 1 %}
-            {% endfor %}
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 </body>
 
 </html>

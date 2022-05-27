@@ -1,19 +1,87 @@
 .table {
-  border-spacing: 0;
-  margin: 1rem;
-  background-color: #f5f5f5;
+  margin-left: auto;
+  margin-right: auto;
+}
+.search {
+  margin-left: auto;
+  margin-right: auto;
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 25%;
+  font-size: 16px;
+  padding: 12px 20px 12px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
 }
 
-.table__row:nth-child(even) {
-  background-image: #e5e5e5;
+#myTable {
+  border-collapse: collapse;
+  width: 50%;
+  border: 1px solid #ddd;
+  font-size: 18px;
 }
-
-.table__header {
+#myTable tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+#myTable th,
+#myTable td {
   text-align: left;
+  padding: 12px;
 }
 
-.table__cell {
-  padding: 8px;
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header,
+#myTable tr:hover {
+  background-color: #f1f1f1;
+}
+.square {
+  margin: 40px;
+  width: 140.67px;
+  height: 86px;
+  background: #0f1a24;
+  border-radius: 6.37px;
+  position: relative
+  }
+.inside_square{
+margin: -24.3px;
+width: 189.33px;
+height: 72px;
+background: #0f1a24;
+border-radius: 6.37px;
+position: relative;
+top: 20px
+}
+.light_square{
+width: 184.36px;
+height: 63px;
+border-radius: 6.37px;
+background: #00c9fb;
+margin-left: 2.5px
+}
+.white_square{
+width: 119px;
+height: 54px;
+border-radius: 16.52px;
+background: #e6e6e6;
+margin-left: 32.3px
+}
+.text{
+font-family: "Bebas Neue";
+font-weight: normal;
+font-size: 25.66px;
+text-align: center;
+color: #fff;
+margin-left: 41px;
+top: 27px
+}
+.nove{
+width: 5px;
+height: 4.5px;
+background: #00c9fb;
+margin-left: 10px
 }
 
 html, body {

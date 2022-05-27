@@ -97,8 +97,7 @@ def logout():
 
 @app.route("/", methods=["GET"])
 def home():
-    prizes = Prize.query.order_by(Prize.id.desc()).filter(
-        db.extract('month', Prize.date) == datetime.today().month).all()
+    prizes = Prize.query.order_by(Prize.id.desc())
     return render_template("table.html", headings=("#", "Name", "Prize", "Date"), prizes=prizes)
 
 

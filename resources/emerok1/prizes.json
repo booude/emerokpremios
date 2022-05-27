@@ -2,13 +2,13 @@
   "0": {
     "prize": "QUALQUER SKIN",
     "desc": "QUALQUER SKIN DO JOGO!!!",
-    "weight": 1.5,
+    "weight": 1.0,
     "price": 990
   },
   "1": {
     "prize": "PASSE WILD",
     "desc": "UM PASSE WILD!!!",
-    "weight": 1.5,
+    "weight": 1.0,
     "price": 590
   },
   "2": {
@@ -52,7 +52,7 @@
     "prize": "10K PONTOS",
     "desc": "10000 PONTOS NA LOJINHA!!!",
     "points": 10000,
-    "weight": 15.0
+    "weight": 16.0
   },
   "10": {
     "prize": "PERDER 1K",
@@ -68,6 +68,6 @@
   },
   "99": {
     "prize": "PRIZE POOL",
-    "weight": 6160
+    "weight": 2230
   }
 }
